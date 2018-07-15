@@ -88,18 +88,68 @@ print (make_melon_type_lookup(make_melon_types()))
 class Melon(object):
     """A melon in a melon harvest."""
 
-    # Fill in the rest
-    # Needs __init__ and is_sellable methods
+    def __init__(self, melon_type, shape_rating, color_rating, harvested_field, harvester):
 
-def make_melons(melon_types):
+        """Initialize a melon."""
+
+        self.type = melon_type
+        self.shape_rating = shape_rating
+        self.color_rating = color_rating
+        self.harvested_field = harvested_field
+        self.harvester = harvester
+
+
+    def is_sellable(self):
+        if self.color_rating > 5 and self.harvested_field != 3 and self.shape_rating > 5:
+            return True
+        else:
+            return False
+
+
+def make_melons():
     """Returns a list of Melon objects."""
 
-    # Fill in the rest
+    all_melons = []
+
+    melon_1 = Melon("yw", 9, 7, 2, "Sheila")
+    all_melons.append(melon_1)
+
+    melon_2 = Melon("yw", 3, 4, 2, "Sheila")
+    all_melons.append(melon_2)
+
+    melon_3 = Melon("yw", 9, 8, 3, "Sheila")
+    all_melons.append(melon_3)
+
+    melon_4 = Melon("cas", 10, 6, 35, "Sheila")
+    all_melons.append(melon_4)
+
+    melon_5 = Melon("cren", 8, 9, 35, "Michael")
+    all_melons.append(melon_5)
+
+    melon_6 = Melon("cren", 8, 2, 35, "Michael")
+    all_melons.append(melon_6)
+
+    melon_7 = Melon("cren", 2, 3, 4, "Michael")
+    all_melons.append(melon_7)
+
+    melon_8 = Melon("musk", 6, 7, 4, "Michael")
+    all_melons.append(melon_8)
+
+    melon_9 = Melon("yw", 7, 10, 3, "Sheila")
+    all_melons.append(melon_9)
+
+    return all_melons
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
 
-    # Fill in the rest
+    for melon in melons:
+        if melon.is_sellable == True:
+            print ("Harvested by {} from Field {} (CAN BE SOLD)".format(melon.harvester,melon.harvested_field))
+        else:
+            print ("Harvested by {} from Field {} (NOT SELLABLE)".format(melon.harvester,melon.harvested_field))
 
 
+lst = make_melons()
+get_sellability_report(lst)
 
